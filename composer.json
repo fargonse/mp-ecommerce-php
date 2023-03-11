@@ -1,5 +1,15 @@
 {
-    "name": "mp-ecommerce-php",
-    "type": "project",
+    "name": "fargonse/mp-ecommerce-php",
+    "autoload": {
+        "psr-4": {
+            "Fargonse\\MpEcommercePhp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Gonzalo Faro",
+            "email": "farogonzalo@gmail.com"
+        }
+    ],
     "require": {}
 }
