@@ -480,7 +480,7 @@
                                                 <img src="./assets/003.jpg"
                                                      class="ir ir item-image as-producttile-image" alt="" width="445"
                                                      height="445"
-                                                     style="content:-webkit-image-set(url({{ $details->img }}) 2x);">
+                                                     style="content:-webkit-image-set(url({{ $details["img"] }}) 2x);">
                                             </div>
 
                                         </div>
@@ -497,16 +497,16 @@
                                     <div class="as-producttile-title">
                                         <h3 class="as-producttile-name">
                                             <p class="as-producttile-tilelink">
-                                                <span data-ase-truncate="2">{{ $details->title }}</span>
+                                                <span data-ase-truncate="2">{{ $details["title"] }}</span>
                                             </p>
 
                                         </h3>
                                     </div>
                                     <h3>
-                                        {{ $details->price }}
+                                        {{ $details["price"] }}
                                     </h3>
                                     <h3>
-                                        {{ $details->unit }}
+                                        {{ $details["unit"] }}
                                     </h3>
                                 </div>
                                 <button type="submit" class="mercadopago-button" formmethod="post">Pagar</button>
