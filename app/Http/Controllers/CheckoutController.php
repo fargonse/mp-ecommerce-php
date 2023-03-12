@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 
 class CheckoutController extends Controller
 {
@@ -73,9 +74,9 @@ class CheckoutController extends Controller
         $preference->items = $this->getItems($request);
         $preference->payer = $this->getPayer();
         $preference->back_urls = [
-            'success' => 'http://localhost:8000/back/success',
-            'pending' => 'http://localhost:8000/back/pending',
-            'failure' => 'http://localhost:8000/back/failure',
+            'success' => URL::to('back/success'),
+            'pending' => URL::to('back/pending'),
+            'failure' => URL::to('back/failure'),
         ];
         $preference->auto_return = "all";
         $preference->notification_url = 'https://fargonse-mp-ecommerce-php.herokuapp.com/api/webhook';
