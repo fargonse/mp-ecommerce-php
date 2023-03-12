@@ -20,3 +20,5 @@ Route::get('/', function () {
 Route::post('detail', [\App\Http\Controllers\DetailController::class, 'getDetail']);
 
 Route::post('checkout', [\App\Http\Controllers\CheckoutController::class, 'sendCheckout']);
+
+Route::get('back/{status}', [\App\Http\Controllers\BackController::class, 'getBackData']);

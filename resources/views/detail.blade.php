@@ -14,14 +14,15 @@
         src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
         crossorigin="anonymous"></script>
+    <script src="https://www.mercadopago.com/v2/security.js" view="item"></script>
 
-    <link rel="stylesheet" href="./assets/category-landing.css" media="screen, print">
+    <link rel="stylesheet" href="assets/category-landing.css" media="screen, print">
 
-    <link rel="stylesheet" href="./assets/category.css" media="screen, print">
+    <link rel="stylesheet" href="assets/category.css" media="screen, print">
 
-    <link rel="stylesheet" href="./assets/merch-tools.css" media="screen, print">
+    <link rel="stylesheet" href="assets/merch-tools.css" media="screen, print">
 
-    <link rel="stylesheet" href="./assets/fonts" media="">
+    <link rel="stylesheet" href="assets/fonts" media="">
     <style>
         .as-filter-button-text {
             font-size: 26px;
@@ -509,7 +510,14 @@
                                         {{ $details["unit"] }}
                                     </h3>
                                 </div>
-                                <button type="submit" class="mercadopago-button" formmethod="post">Pagar</button>
+                                <form method="POST" action="checkout">
+                                    @csrf
+                                    <input type="hidden" name="img" value="{{ $details["img"] }}">
+                                    <input type="hidden" name="title" value="{{ $details["title"] }}">
+                                    <input type="hidden" name="price" value="{{ $details["price"] }}">
+                                    <input type="hidden" name="unit" value="{{ $details["unit"] }}">
+                                    <button type="submit" class="mercadopago-button">Pagar</button>
+                                </form>
                             </div>
                         </div>
                     </div>
