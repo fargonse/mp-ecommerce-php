@@ -22,6 +22,7 @@ class CheckoutController extends Controller
     private function getItems(Request $request): array
     {
         $item = new \MercadoPago\Item();
+        $item->id = '1234';
         $item->title = $request->title;
         $item->quantity = 1;
         $item->unit_price = $request->price;
