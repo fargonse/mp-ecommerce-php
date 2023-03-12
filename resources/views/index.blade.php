@@ -673,7 +673,7 @@
                                     </div>
                                     <form action="detail" method="POST">
                                         @csrf
-                                        <input type="hidden" name="img" value="{{ asset('assets/samsung-galaxy-s9-xxl.jpg') }}">
+                                        <input type="hidden" name="img" value="{{ secure_asset('assets/samsung-galaxy-s9-xxl.jpg') }}">
                                         <input type="hidden" name="title" value="Samsung Galaxy S9">
                                         <input type="hidden" name="price" value="15000">
                                         <input type="hidden" name="unit" value="1">
@@ -738,7 +738,7 @@
                                     </div>
                                     <form action="detail" method="POST">
                                         @csrf
-                                        <input type="hidden" name="img" value="{{ asset('assets/l6g6.jpg') }}">
+                                        <input type="hidden" name="img" value="{{ secure_asset('assets/l6g6.jpg') }}">
                                         <input type="hidden" name="title" value="LG G6">
                                         <input type="hidden" name="price" value="10000">
                                         <input type="hidden" name="unit" value="1">
@@ -809,7 +809,7 @@
                                     </div>
                                     <form action="detail" method="POST">
                                         @csrf
-                                        <input type="hidden" name="img" value="{{ asset('assets/u_10168742.jpg') }}">
+                                        <input type="hidden" name="img" value="{{ secure_asset('assets/u_10168742.jpg') }}">
                                         <input type="hidden" name="title" value="iPhone 8">
                                         <input type="hidden" name="price" value="16000">
                                         <input type="hidden" name="unit" value="1">
@@ -879,7 +879,7 @@
                                     </div>
                                     <form action="detail" method="POST">
                                         @csrf
-                                        <input type="hidden" name="img" value="{{ asset('assets/motorola-moto-g5-plus-1.jpg') }}">
+                                        <input type="hidden" name="img" value="{{ secure_asset('assets/motorola-moto-g5-plus-1.jpg') }}">
                                         <input type="hidden" name="title" value="Motorola G5">
                                         <input type="hidden" name="price" value="9000">
                                         <input type="hidden" name="unit" value="1">
@@ -939,7 +939,7 @@
                                     </div>
                                     <form action="detail" method="POST">
                                         @csrf
-                                        <input type="hidden" name="img" value="{{ asset('assets/motorola-moto-g4-3.jpg') }}">
+                                        <input type="hidden" name="img" value="{{ secure_asset('assets/motorola-moto-g4-3.jpg') }}">
                                         <input type="hidden" name="title" value="Moto G4">
                                         <input type="hidden" name="price" value="8000">
                                         <input type="hidden" name="unit" value="1">
@@ -997,7 +997,7 @@
                                     </div>
                                     <form method="POST" action="detail">
                                         @csrf
-                                        <input type="hidden" name="img" value="{{ asset('assets/003.jpg') }}">
+                                        <input type="hidden" name="img" value="{{ secure_asset('assets/003.jpg') }}">
                                         <input type="hidden" name="title" value="Sony Xperia XZ2">
                                         <input type="hidden" name="price" value="10000">
                                         <input type="hidden" name="unit" value="1">

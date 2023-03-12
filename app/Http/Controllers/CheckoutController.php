@@ -26,6 +26,7 @@ class CheckoutController extends Controller
         $item->quantity = 1;
         $item->unit_price = $request->price;
         $item->picture_url = $request->img;
+
         return [$item];
     }
 
