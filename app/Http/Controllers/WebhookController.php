@@ -9,6 +9,7 @@ class WebhookController extends Controller
 {
     public function getNotification(Request $request) {
         $filename = 'notification_' . now()->timestamp . '.log';
-        Storage::disk('local')->put($filename, json_encode($request->all()));
+
+        Storage::disk('s3')->put($filename, json_encode($request->all()));
     }
 }
