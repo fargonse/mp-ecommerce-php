@@ -16,8 +16,36 @@ class CheckoutController extends Controller
     }
 
     /**
+     * @return void
+     */
+    private function setupSDK(): void
+    {
+        \MercadoPago\SDK::setAccessToken('APP_USR-8709825494258279-092911-227a84b3ec8d8b30fff364888abeb67a-1160706432');
+        \MercadoPago\SDK::setPlatformId("fargonse-mp-ecommerce-php");
+        \MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
+    }
+
+    /**
      * @param Request $request
-     * @return \MercadoPago\Item
+     * @return \MercadoPago\Preference
+     * @throws \Exception
+     */
+    private function buildPreference(Request $request): \MercadoPago\Preference
+    {
+        $preference = new \MercadoPago\Preference();
+        $preference->items = $this->getItems($request);
+        $preference->payer = $this->getPayer();
+        $preference->back_urls = $this->getBackUrls();
+        $preference->payment_methods = $this->getPaymentMethods();
+        $preference->auto_return = "all";
+        $preference->notification_url = 'https://fargonse-mp-ecommerce-php.herokuapp.com/api/webhook';
+        $preference->save();
+        return $preference;
+    }
+
+    /**
+     * @param Request $request
+     * @return array
      */
     private function getItems(Request $request): array
     {
@@ -56,33 +84,27 @@ class CheckoutController extends Controller
     }
 
     /**
-     * @return void
+     * @return array
      */
-    private function setupSDK(): void
+    private function getBackUrls(): array
     {
-        \MercadoPago\SDK::setAccessToken('APP_USR-8709825494258279-092911-227a84b3ec8d8b30fff364888abeb67a-1160706432');
-        \MercadoPago\SDK::setPlatformId("fargonse-mp-ecommerce-php");
-        \MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
-    }
-
-    /**
-     * @param Request $request
-     * @return \MercadoPago\Preference
-     * @throws \Exception
-     */
-    private function buildPreference(Request $request): \MercadoPago\Preference
-    {
-        $preference = new \MercadoPago\Preference();
-        $preference->items = $this->getItems($request);
-        $preference->payer = $this->getPayer();
-        $preference->back_urls = [
+        return [
             'success' => URL::to('back/success'),
             'pending' => URL::to('back/pending'),
             'failure' => URL::to('back/failure'),
         ];
-        $preference->auto_return = "all";
-        $preference->notification_url = 'https://fargonse-mp-ecommerce-php.herokuapp.com/api/webhook';
-        $preference->save();
-        return $preference;
+    }
+
+    /**
+     * @return int[]
+     */
+    private function getPaymentMethods(): array
+    {
+        return [
+            'installments' => 6,
+            'excluded_payment_methods' => [
+                [ "id" => 'visa' ],
+            ],
+        ];
     }
 }
